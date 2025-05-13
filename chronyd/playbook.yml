@@ -1,0 +1,7 @@
+---
+# Run the chrony daemon (chronyd) on all hosts specified in the host inventory file
+- hosts: all
+  become: yes
+  tasks:
+  - dnf: name=chrony state=present
+  - service: name=chronyd state=started enabled=yes
