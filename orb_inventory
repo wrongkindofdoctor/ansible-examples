@@ -1,0 +1,4 @@
+[servers]
+rocky@orb  ansible_user=rockym
+
+
