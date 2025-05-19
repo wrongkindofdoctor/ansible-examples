@@ -1,0 +1,21 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+  
+  - name: Update repository index
+    ansible.builtin.dnf: 
+      update_cache: yes
+
+    when: ansible_distribution == "Rocky"
+
+  - name: Install the latest version of Apache
+    ansible.builtin.dnf:
+      name: httpd
+      state: latest
+  
+  - name: Add php support
+    ansible.builtin.dnf:
+      name: php, php-cli, php-gd, php-curl, php-zip, php-mbstring
+      state: latest
